@@ -224,11 +224,12 @@ function GrowthChart() {
   const pts = [
   { label: "Sep '25", gtv: 0.86 },
   { label: "Dec '25", gtv: 5.16 },
-  { label: "Apr '26", gtv: 8.56 }];
+  { label: "Apr '26", gtv: 8.56 },
+  { label: "Jul '26", gtv: 11.85 }];
 
   const W = 560,H = 380,padL = 22,padR = 22,padT = 34,padB = 46;
   const bandL = 78;
-  const maxV = 9;
+  const maxV = 12;
   const n = pts.length;
   const band = (W - bandL - padR) / n;
   const barW = Math.min(124, band * 0.64);
@@ -253,7 +254,7 @@ function GrowthChart() {
             <stop offset="100%" stopColor="#ccff00" stopOpacity=".3" />
           </linearGradient>
         </defs>
-        {[0, 3, 6, 9].map((g) =>
+        {[0, 3, 6, 9, 12].map((g) =>
         <g key={g}>
             <line x1={padL} y1={yFor(g)} x2={W - padR} y2={yFor(g)} stroke="#161616" strokeWidth="1" />
             <text x={padL} y={yFor(g) - 7} fill="#919191" fontSize="15" fontWeight="500" fontFamily="var(--pp-font-display)">${g}M</text>
@@ -273,8 +274,8 @@ function GrowthChart() {
 
 const HERO_STATS = [
 { v: 30000, fmt: (n) => Math.round(n / 1000) + "K+", l: "KYC approved" },
-{ v: 4926, fmt: (n) => Math.round(n).toLocaleString(), l: "Actively spending" },
-{ v: 103, fmt: (n) => "$" + Math.round(n) + "M", l: "Annualized GTV run-rate" },
+{ v: 5924, fmt: (n) => Math.round(n).toLocaleString(), l: "Actively spending" },
+{ v: 142.2, fmt: (n) => "$" + n.toFixed(1) + "M", l: "Annualized GTV run-rate" },
 { v: 4.8, fmt: (n) => "$" + n.toFixed(1) + "M", l: "Annualized revenue run-rate" }];
 
 const TRACTION_TABLE = {
@@ -454,7 +455,7 @@ function Traction() {
           <HCard style={{ gap: 18, height: "100%", minHeight: 440, justifyContent: "space-between" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
               <h3 className="pp-h3" style={{ margin: 0, fontSize: 20 }}>Monthly GTV</h3>
-              <span style={{ fontFamily: "var(--pp-font-display)", fontWeight: 700, color: "var(--pp-acid)", fontSize: 15 }}>10× in 7 months</span>
+              <span style={{ fontFamily: "var(--pp-font-display)", fontWeight: 700, color: "var(--pp-acid)", fontSize: 15 }}>14× in 10 months</span>
             </div>
             <GrowthChart />
           </HCard>
@@ -466,7 +467,7 @@ function Traction() {
 
       <Reveal>
         <p className="pp-caption" style={{ margin: 0, textAlign: "center" }}>
-          Data as of April 2026.
+          Data as of July 2026 · 7-month metrics table: Sep '25 → Apr '26.
         </p>
       </Reveal>
     </Section>
